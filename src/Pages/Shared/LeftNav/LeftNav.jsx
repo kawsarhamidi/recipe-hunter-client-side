@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const LeftNav = () => {
     const [chef, setChef] = useState([]);
-    console.log(chef);
+    
 
     useEffect(() => {
         fetch('http://localhost:5000/chef')
             .then(res => res.json())
             .then(data => setChef(data))
-            .catch(error => console.error(error))
+            .catch(error => console.log(error))
     }, [])
     return (
         <div className=''>

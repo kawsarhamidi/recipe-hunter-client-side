@@ -9,7 +9,13 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handelLogOut = ()=>{
+        logOut()
+        .then()
+        .catch(error => console.error(error))
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -25,7 +31,7 @@ const Header = () => {
                     <Nav>
                         <Image className='me-2' src={user?.img} roundedCircle />
                         {user && <Button className='me-2' variant="info"><FaUserCircle></FaUserCircle></Button>}
-                        { user ? <Button variant="info">SinOut</Button> :
+                        { user ? <Button onClick={handelLogOut} variant="info">SinOut</Button> :
                             <Link to='/login'><Button variant="info">SinIn</Button></Link> }
                     </Nav>
                     <Dropdown  className='ms-2' >

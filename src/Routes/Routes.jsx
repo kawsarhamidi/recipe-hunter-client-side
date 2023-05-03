@@ -6,6 +6,7 @@ import ChefLayout from "../layouts/chefLayout";
 import Chef from "../Pages/Chef/Chef";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import PrivetRoutes from "./PrivetRoutes";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '/',
-                element: <ChefData></ChefData>,
+                element:<PrivetRoutes> <ChefData></ChefData></PrivetRoutes>,
                 loader: (() => fetch('http://localhost:5000/foods'))
             },
             {
