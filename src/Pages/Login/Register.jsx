@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
+
+    const handelRegistration = e =>{
+        e.preventDefault();
+        const form =e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const images = form.images.value;
+    }
+
     return (
         <Container>
-            <Form>
+            <Form onSubmit={handelRegistration}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>You Name</Form.Label>
                     <Form.Control type="text" name='name' placeholder="Your Name" required />
