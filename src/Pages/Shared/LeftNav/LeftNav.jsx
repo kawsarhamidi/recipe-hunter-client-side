@@ -4,37 +4,38 @@ import { Link } from 'react-router-dom';
 
 const LeftNav = () => {
     const [chef, setChef] = useState([]);
+    console.log(chef);
 
-    useEffect( ()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/chef')
-        .then(res=> res.json())
-        .then(data=> setChef(data))
-        .catch(error=> console.error(error))
-    },[])
+            .then(res => res.json())
+            .then(data => setChef(data))
+            .catch(error => console.error(error))
+    }, [])
     return (
         <div className=''>
             <h4>All chef details</h4>
 
             {
                 chef.map(chefs => <div className="mt-4" key={chefs.id}>
-                    <Card style={{ width: '18rem' }} >
-                <Card.Img variant="top" src={chefs.picture} />
-                <Card.Body>
-                  <Card.Title>{chefs.name}</Card.Title>
-                  <Card.Text>
-                  Years Of Experience: {chefs.yearsOfExperience}
-                    </Card.Text>
-                  <Card.Text>
-                  Number Of Recipes: {chefs.numberOfRecipes}
-                    </Card.Text>
-                  <Card.Text>
-                  Likes: {chefs.likes}
-                    </Card.Text>
-                  <Link to={`/chef/${chef.id}`}><Button variant="primary">Go to details</Button></Link> 
-                </Card.Body>
-              </Card>
+                    <Card >
+                        <Card.Img variant="top" src={chefs.picture} />
+                        <Card.Body>
+                            <Card.Title>{chefs.name}</Card.Title>
+                            <Card.Text>
+                                Years Of Experience: {chefs.yearsOfExperience}
+                            </Card.Text>
+                            <Card.Text>
+                                Number Of Recipes: {chefs.numberOfRecipes}
+                            </Card.Text>
+                            <Card.Text>
+                                Likes: {chefs.likes}
+                            </Card.Text>
+                            <Link to={`/chef/${chefs.id}`}><Button variant="primary">Go to details</Button></Link>
+                        </Card.Body>
+                    </Card>
                 </div>
-              )
+                )
             }
         </div>
     );

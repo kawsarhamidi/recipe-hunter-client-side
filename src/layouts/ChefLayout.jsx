@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import LeftNav from '../Pages/Shared/LeftNav/LeftNav';
 import { Outlet } from 'react-router-dom';
 
-const Main = () => {
+const ChefLayout = () => {
     return (
         <div>
             <Header></Header>
@@ -25,4 +25,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default ChefLayout;
